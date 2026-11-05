@@ -1,0 +1,15 @@
+{
+  "name": "mis-tareas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "App web personal para organizar las tareas diarias",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "start": "node scripts/servidor.js"
+  },
+  "devDependencies": {
+    "jsdom": "29.1.1",
+    "vitest": "5.1.0"
+  }
+}

@@ -1,0 +1,307 @@
+/* Mobile-first: los estilos base sirven desde 360 px; las pantallas mayores se amplían al final. */
+
+:root {
+  color-scheme: light dark;
+  --fondo: #f6f7f9;
+  --superficie: #ffffff;
+  --texto: #1c2230;
+  --texto-suave: #556070;
+  --borde: #c5ccd6;
+  --acento: #1d5fd1;
+  --acento-texto: #ffffff;
+  --peligro: #b3261e;
+  --vencida-fondo: #fdecea;
+  --vencida-borde: #b3261e;
+  --aviso-fondo: #fff4d6;
+  --aviso-borde: #8a6100;
+  --tactil: 44px;
+  --espacio: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #12161d;
+    --superficie: #1b212b;
+    --texto: #e9edf3;
+    --texto-suave: #a5afbd;
+    --borde: #3a4454;
+    --acento: #6ea2ff;
+    --acento-texto: #0b1220;
+    --peligro: #ff8a80;
+    --vencida-fondo: #3a1e1c;
+    --vencida-borde: #ff8a80;
+    --aviso-fondo: #3a2f12;
+    --aviso-borde: #e6b84d;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font: 16px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.aplicacion {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--espacio);
+}
+
+h1 {
+  margin: 0 0 var(--espacio);
+  font-size: 1.5rem;
+}
+
+/* Avisos de guardado: llevan texto, no solo color */
+
+#avisos:empty {
+  display: none;
+}
+
+#avisos {
+  margin: 0 0 var(--espacio);
+  padding: var(--espacio);
+  background: var(--aviso-fondo);
+  border: 1px solid var(--aviso-borde);
+  border-left-width: 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* Formulario */
+
+#formulario-tarea {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: var(--espacio);
+  margin-bottom: var(--espacio);
+}
+
+.campo {
+  margin: 0 0 var(--espacio);
+  padding: 0;
+  border: 0;
+}
+
+.campo label,
+.campo legend {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  padding: 0;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  min-height: var(--tactil);
+  padding: 8px 10px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: var(--fondo);
+  color: var(--texto);
+  font: inherit;
+}
+
+.campo .opcion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tactil);
+  margin: 0 var(--espacio) 0 0;
+  font-weight: 400;
+}
+
+.campo .opcion input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+}
+
+.error {
+  margin: 4px 0 0;
+  color: var(--peligro);
+  font-weight: 600;
+}
+
+.error[hidden] {
+  display: none;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button {
+  min-height: var(--tactil);
+  min-width: var(--tactil);
+  padding: 8px 16px;
+  border: 1px solid var(--acento);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--acento);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background: var(--acento);
+  color: var(--acento-texto);
+}
+
+/* Lista */
+
+.vacio {
+  padding: var(--espacio);
+  text-align: center;
+  color: var(--texto-suave);
+}
+
+#lista-tareas {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tarea {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacio);
+  margin-bottom: 8px;
+  padding: var(--espacio);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+}
+
+.tarea-casilla {
+  flex: none;
+  width: var(--tactil);
+  height: var(--tactil);
+  margin: -8px 0 -8px -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarea-casilla input {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
+.tarea-cuerpo {
+  flex: 1;
+  min-width: 0;
+}
+
+.tarea-titulo {
+  margin: 0 0 4px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tarea-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.prioridad {
+  font-weight: 600;
+}
+
+/* Acciones de cada tarea y borrado en bloque (todos los botones miden al menos 44×44 px) */
+
+.tarea-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+button[data-accion="borrar"],
+#boton-borrar-completadas {
+  border-color: var(--peligro);
+  color: var(--peligro);
+}
+
+#boton-borrar-completadas {
+  width: 100%;
+  margin-top: var(--espacio);
+}
+
+/* Modo edición: el formulario y la tarea que se edita se distinguen con borde y contorno,
+   y además el botón cambia a "Guardar cambios" y aparece "Cancelar". */
+
+#formulario-tarea.editando {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 2px var(--acento);
+}
+
+.tarea.en-edicion {
+  outline: 3px solid var(--acento);
+  outline-offset: 2px;
+}
+
+#boton-cancelar[hidden] {
+  display: none;
+}
+
+/* Vencidas: fondo y borde de aviso, y además la etiqueta con texto "Vencida" */
+
+.tarea.vencida {
+  background: var(--vencida-fondo);
+  border-color: var(--vencida-borde);
+  box-shadow: inset 6px 0 0 var(--vencida-borde);
+}
+
+.etiqueta-vencida {
+  color: var(--peligro);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Completadas: tachadas y atenuadas (además de la casilla marcada) */
+
+.tarea.completada {
+  opacity: 0.7;
+}
+
+.tarea.completada .tarea-titulo {
+  text-decoration: line-through;
+}
+
+/* Pantallas mayores: se amplía lo pensado para móvil. */
+
+@media (min-width: 640px) {
+  .aplicacion {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .tarea-datos {
+    font-size: 1rem;
+  }
+}

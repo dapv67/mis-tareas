@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mis tareas</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <main class="aplicacion">
+    <h1>Mis tareas</h1>
+
+    <div id="avisos" role="status"></div>
+
+    <form id="formulario-tarea" aria-label="Nueva tarea" novalidate>
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input id="titulo" name="titulo" type="text" maxlength="200" autocomplete="off">
+        <p id="error-titulo" class="error" hidden></p>
+      </div>
+
+      <div class="campo">
+        <label for="fecha-limite">Fecha límite (opcional)</label>
+        <input id="fecha-limite" name="fechaLimite" type="date">
+        <p id="error-fecha" class="error" hidden></p>
+      </div>
+
+      <fieldset class="campo">
+        <legend>Prioridad</legend>
+        <label class="opcion"><input type="radio" name="prioridad" value="alta"> Alta</label>
+        <label class="opcion"><input type="radio" name="prioridad" value="media" checked> Media</label>
+        <label class="opcion"><input type="radio" name="prioridad" value="baja"> Baja</label>
+      </fieldset>
+
+      <div class="acciones">
+        <button type="submit" id="boton-guardar">Añadir tarea</button>
+        <button type="button" id="boton-cancelar" hidden>Cancelar</button>
+      </div>
+    </form>
+
+    <p id="mensaje-vacio" class="vacio" hidden>No tienes tareas. Escribe la primera arriba.</p>
+
+    <ul id="lista-tareas" aria-label="Tareas"></ul>
+
+    <button type="button" id="boton-borrar-completadas" hidden>Borrar completadas</button>
+  </main>
+</body>
+</html>
